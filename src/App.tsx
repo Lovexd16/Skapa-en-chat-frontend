@@ -1,28 +1,41 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-
-interface user {
-  id: string;
-  username: string;
-  password: string;
-}
+import Start from "./pages/Start";
+import Chat from "./pages/Chat";
+import Users from "./pages/Users";
+import { useEffect, useState } from "react";
+import Navigation from "./components/Navigation";
 
 function App() {
-  const [users, setUsers] = useState<user[]>([]);
+  const [page, setPage] = useState<string>("");
 
   useEffect(() => {
-    fetch("https://lionfish-app-mkzan.ondigitalocean.app/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+    let pageUrl = page;
+
+    if (!pageUrl) {
+      const queryParams = new URLSearchParams(window.location.search);
+      const getUrl = queryParams.get("page");
+
+      if (getUrl) {
+        pageUrl = getUrl;
+        setPage(getUrl);
+      } else {
+        pageUrl = "start";
+      }
+    }
+
+    window.history.pushState(null, "", "?page=" + pageUrl);
+  }, [page]);
 
   return (
     <>
       <h1>Chatta med vänner</h1>
-      <p>Befintliga användare:</p>
-      {users.map((user: user) => (
-        <div key={user.id}>{user.username}</div>
-      ))}
+      <Navigation setPage={setPage} />
+
+      {{
+        start: <Start />,
+        chat: <Chat />,
+        users: <Users />,
+      }[page] || <Start />}
     </>
   );
 }

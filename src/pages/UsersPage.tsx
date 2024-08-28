@@ -1,6 +1,6 @@
 import ShowUsers from "../components/ShowUsers";
 
-function Users() {
+function UsersPage() {
   return (
     <div>
       <ShowUsers />
@@ -8,4 +8,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default UsersPage;

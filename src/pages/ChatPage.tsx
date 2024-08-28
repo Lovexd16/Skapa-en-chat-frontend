@@ -1,4 +1,4 @@
-function Chat() {
+function ChatPage() {
   return (
     <div>
       <h3>Chatta</h3>
@@ -6,4 +6,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default ChatPage;

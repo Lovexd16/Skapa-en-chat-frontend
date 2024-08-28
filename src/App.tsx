@@ -1,7 +1,7 @@
 import "./App.css";
-import Start from "./pages/Start";
-import Chat from "./pages/Chat";
-import Users from "./pages/Users";
+import StartPage from "./pages/StartPage";
+import ChatPage from "./pages/ChatPage";
+import UsersPage from "./pages/UsersPage";
 import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 
@@ -32,10 +32,10 @@ function App() {
       <Navigation setPage={setPage} />
 
       {{
-        start: <Start />,
-        chat: <Chat />,
-        users: <Users />,
-      }[page] || <Start />}
+        start: <StartPage />,
+        chat: <ChatPage />,
+        users: <UsersPage />,
+      }[page] || <StartPage />}
     </>
   );
 }

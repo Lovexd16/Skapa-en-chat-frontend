@@ -13,7 +13,9 @@ function Chat() {
     const storedUsername = localStorage.getItem("username");
     setUsername(storedUsername);
 
-    const socket = new SockJS("http://localhost:8080/websocket");
+    const socket = new SockJS(
+      "https://lionfish-app-mkzan.ondigitalocean.app/websocket"
+    );
     const client = Stomp.over(socket);
 
     client.connect({}, (frame: string) => {
@@ -68,7 +70,6 @@ function Chat() {
   return (
     <div>
       <div>
-        <h2>Chat</h2>
         <div
           style={{
             border: "1px solid black",

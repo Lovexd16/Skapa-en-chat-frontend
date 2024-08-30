@@ -1,3 +1,4 @@
+import "./utils/global";
 import "./App.css";
 import StartPage from "./pages/StartPage";
 import ChatPage from "./pages/ChatPage";

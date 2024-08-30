@@ -37,7 +37,9 @@ function Login({ setPage, setIsLoggedIn }: Props) {
       .then((token) => {
         console.log("Mottagen JWT-token:", token);
 
-        localStorage.setItem("token", token);
+        // Spara användarnamnet i lokal lagring
+        localStorage.setItem("username", newLogin.username);
+        localStorage.setItem("token", token); // För att spara token också om det behövs
 
         setPage("start");
         setIsLoggedIn(true);

@@ -9,7 +9,6 @@ function Chat() {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    // Hämta användarnamnet från lokal lagring
     const storedUsername = localStorage.getItem("username");
     setUsername(storedUsername);
 
@@ -21,7 +20,6 @@ function Chat() {
     client.connect({}, (frame: string) => {
       console.log("Connected: " + frame);
 
-      // Skicka en hälsning när användaren ansluter
       if (storedUsername) {
         client.send("/app/greet", {}, JSON.stringify({ name: storedUsername }));
       }
